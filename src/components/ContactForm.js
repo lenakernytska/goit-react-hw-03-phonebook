@@ -34,6 +34,7 @@ state = {
             type="text"
             name="name"
             value={name}
+            autoComplete="off"
             onChange={this.handleChange}
           />
                 </label>
@@ -41,9 +42,10 @@ state = {
                     Number
           <input
             className={styles.input}
-            type="tel"
+            type="number"
             name="number"
             value={number}
+            autoComplete="off"
             onChange={this.handleChange}
           />
         </label>

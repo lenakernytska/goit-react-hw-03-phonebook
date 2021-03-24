@@ -22,10 +22,16 @@ class App extends Component {
       name,
       number
     }
-    const repeatedNames = this.state.contacts.find(contact => contact.name === newContact.name);
-    repeatedNames
-      ? alert(`${newContact.name} is already in contacts!`)
-      : this.setState(prevState => ({ contacts: [newContact, ...prevState.contacts] }));
+    const repeatedContact = this.state.contacts.find(contact => contact.name === newContact.name);
+    const invalidContact = newContact.name.length === 0 || newContact.number.length === 0;
+    if (repeatedContact) {
+      alert(`${newContact.name} is already in contacts!`)
+    } else if (invalidContact) {
+      alert("Fill empty fields!");
+    } else {
+      this.setState(prevState => ({ contacts: [newContact, ...prevState.contacts] }));
+    }
+    
   }
 
 
@@ -61,6 +67,7 @@ class App extends Component {
   render() {
     const { filter} = this.state;
     const visibleContacts = this.getVisibleContacts();
+
     return (
     <div>
   <h1>Phonebook</h1>
